@@ -1,12 +1,14 @@
 import os
 import shutil
 
-
 path = input("Scrieti calea folderului: ")
 file_list = os.listdir(path)
 
 
 def arange_files():
+    """
+    Aranjeaza toate fisierele in foldere in functie de extensie
+    """
     for file in file_list:
         name, extension = os.path.splitext(file)
         extension = extension[1:]
@@ -25,6 +27,9 @@ arange_files()
 
 
 def count_all_files():
+    """
+    Calculeaza cate fisiere au fost mutate in total
+    """
     count = 0
     for dirpath, dirnames, filenames in os.walk(path):
         count += len(filenames)
@@ -36,7 +41,9 @@ count_all_files()
 
 
 def count_file_folder():
-
+    """
+    calculeaza cate fisiere sunt in fiecare folder
+    """
     for dirpath, dirnames, filenames in os.walk(path):
          with open("numar_fisiere.txt", "a") as fw:
             fw.write(f"In folderul {dirpath} sunt {len(filenames)} fisiere. \n")
